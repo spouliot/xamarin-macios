@@ -48,14 +48,6 @@ namespace Xamarin.Linker.Steps {
 			}
 		}
 
-		protected override void EnqueueMethod (MethodDefinition method)
-		{
-			// workaround for "System.Void System.Runtime.CompilerServices.NullableAttribute::.ctor(System.Byte)"
-			// that keep being re-introduced into the queue and keep the processing going forever
-			if (!_methods.Contains (method))
-				base.EnqueueMethod (method);
-		}
-
 		protected AssemblyDefinition GetAssembly (string assemblyName)
 		{
 			AssemblyDefinition ad;
